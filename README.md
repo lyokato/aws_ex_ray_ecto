@@ -50,6 +50,8 @@ config :my_app, MyApp.EctoRepo,
   loggers:  [Ecto.LogEntry, AwsExRay.Ecto.Logger]
 ```
 
+Then automatically record subsegment if queries called on the tracing process.
+
 ## SEE ALSO
 
 - Core: https://github.com/lyokato/aws_ex_ray
