@@ -6,6 +6,7 @@ defmodule AwsExRayEcto.MixProject do
       app: :aws_ex_ray_ecto,
       version: "0.1.0",
       elixir: "~> 1.6",
+      package: package(),
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
@@ -19,7 +20,19 @@ defmodule AwsExRayEcto.MixProject do
 
   defp deps do
     [
-      {:aws_ex_ray, github: "lyokato/aws_ex_ray"}
+      {:aws_ex_ray, "~> 0.1"}
+    ]
+  end
+
+  defp package() do
+    [
+      description: "AWS X-Ray reporter Ecto support",
+      licenses: ["MIT"],
+      links: %{
+        "Github" => "https://github.com/lyokato/aws_ex_ray_ecto",
+        "Docs" => "https://hexdocs.pm/aws_ex_ray_ecto"
+      },
+      maintainers: ["Lyo Kato"]
     ]
   end
 end
