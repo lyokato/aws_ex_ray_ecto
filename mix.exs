@@ -4,7 +4,7 @@ defmodule AwsExRayEcto.MixProject do
   def project do
     [
       app: :aws_ex_ray_ecto,
-      version: "0.1.2",
+      version: "0.1.3",
       elixir: "~> 1.6",
       package: package(),
       start_permanent: Mix.env() == :prod,
@@ -20,7 +20,8 @@ defmodule AwsExRayEcto.MixProject do
 
   defp deps do
     [
-      {:aws_ex_ray, "~> 0.1"}
+      {:aws_ex_ray, "~> 0.1"},
+      {:ex_doc, "~> 0.15", only: :dev, runtime: false}
     ]
   end
 
