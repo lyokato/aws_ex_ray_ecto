@@ -20,7 +20,8 @@ defmodule AwsExRayEcto.MixProject do
 
   defp deps do
     [
-      {:aws_ex_ray, "~> 0.1"}
+      {:aws_ex_ray, "~> 0.1"},
+      {:ex_doc, "~> 0.15", only: :dev, runtime: false}
     ]
   end
 
