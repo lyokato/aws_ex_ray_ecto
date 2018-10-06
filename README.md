@@ -24,7 +24,7 @@ end
 def deps do
   [
     {:aws_ex_ray, "~> 0.1"},
-    {:aws_ex_ray_ecto, "~> 0.1"},
+    {:aws_ex_ray_ecto, "~> 0.1.4"},
      # ...
   ]
 end
