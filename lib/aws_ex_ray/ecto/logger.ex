@@ -11,9 +11,9 @@ defmodule AwsExRay.Ecto.Logger do
       tracing_pid: entry.caller_pid
     ]
 
-    case AwsExRay.start_subsegment("Ecto", opts) do
+    case start_subsegment("Ecto", opts) do
 
-      {:error, :out_of_xray} -> :ok
+      {:error, _reason} -> :ok
 
       {:ok, subsegment} ->
 
@@ -46,6 +46,14 @@ defmodule AwsExRay.Ecto.Logger do
 
     end
 
+  end
+
+  defp start_subsegment(name, opts) do
+    try do
+      AwsExRay.start_subsegment(name, opts)
+    rescue
+      e -> {:error, e}
+    end
   end
 
 end
