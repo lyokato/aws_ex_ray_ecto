@@ -1,24 +1,20 @@
 defmodule AwsExRay.Ecto.Logger do
-
   alias AwsExRay.Record.SQL
   alias AwsExRay.Subsegment
   alias AwsExRay.Util
 
   def log(entry) do
-
     opts = [
-      namespace:   :remote,
+      namespace: :remote,
       tracing_pid: entry.caller_pid
     ]
 
     case start_subsegment("Ecto", opts) do
-
-      {:error, _reason} -> :ok
+      {:error, _reason} ->
+        :ok
 
       {:ok, subsegment} ->
-
-        elapsed_microsec =
-          System.convert_time_unit(entry.query_time, :native, :microsecond)
+        elapsed_microsec = System.convert_time_unit(entry.query_time, :native, :microsecond)
 
         elapsed_sec = elapsed_microsec / 1_000_000
 
@@ -27,7 +23,7 @@ defmodule AwsExRay.Ecto.Logger do
         start_time = end_time - elapsed_sec
 
         sql = %SQL{
-          sanitized_query: entry.query,
+          sanitized_query: entry.query
           # url: "",
           # connection_string: "",
           # database_type: "",
@@ -43,9 +39,7 @@ defmodule AwsExRay.Ecto.Logger do
         |> AwsExRay.finish_subsegment(end_time)
 
         :ok
-
     end
-
   end
 
   defp start_subsegment(name, opts) do
@@ -55,5 +49,4 @@ defmodule AwsExRay.Ecto.Logger do
       e -> {:error, e}
     end
   end
-
 end

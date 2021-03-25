@@ -1,5 +1,4 @@
 defmodule AwsExRay.Ecto do
-
   @moduledoc ~S"""
 
   ## USAGE
@@ -21,5 +20,4 @@ defmodule AwsExRay.Ecto do
   Then automatically record subsegment if queries called on the tracing process.
 
   """
-
 end
