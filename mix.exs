@@ -4,7 +4,7 @@ defmodule AwsExRayEcto.MixProject do
   def project do
     [
       app: :aws_ex_ray_ecto,
-      version: "0.2.4",
+      version: "0.2.0",
       elixir: "~> 1.6",
       package: package(),
       start_permanent: Mix.env() == :prod,
