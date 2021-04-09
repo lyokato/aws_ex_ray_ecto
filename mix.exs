@@ -23,7 +23,7 @@ defmodule AwsExRayEcto.MixProject do
     [
       {:aws_ex_ray, "~> 0.1"},
       {:telemetry, "~> 0.4"},
-      {:ex_doc, "~> 0.18.0", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.23.0", only: :dev, runtime: false}
     ]
   end
 
