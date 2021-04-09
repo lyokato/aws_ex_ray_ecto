@@ -24,7 +24,7 @@ end
 def deps do
   [
     {:aws_ex_ray, "~> 0.1"},
-    {:aws_ex_ray_ecto, "~> 0.1.4"},
+    {:aws_ex_ray_ecto, "~> 0.2.0"},
      # ...
   ]
 end
@@ -35,6 +35,33 @@ and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/aws_ex_ray_ecto](https://hexdocs.pm/aws_ex_ray_ecto).
 
 ## USAGE
+
+### with Ecto >= 3 - Telemetry based instrumenter
+
+In your Application file
+
+```elixir
+defmodule MyApp.Application do
+  use Application
+
+  @impl Application
+  def start(_type, _opts) do
+    ...
+    AwsExRay.Ecto.Instrumenter.attach(ecto_app_name)
+    ...
+  end
+end
+```
+
+`ecto_app_name` can be found in your `Repo` file as `:otp_app` value
+
+```elixir
+defmodule MyApp.Repo do
+  use Ecto.Repo, otp_app: :my_app, adapter: Ecto.Adapters.MyXQL
+end
+```
+
+### with Ecto < 3 - Logger based
 
 In your config file,
 put `AwsExRay.Ecto.Logger` into Ecto's `:loggers` setting.
